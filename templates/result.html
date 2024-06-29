@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disease Symptoms Prediction</title>
+</head>
+<body>
+    <h1>Disease Prediction</h1>
+    
+    <h4>Your symptoms:</h4>
+    <ul>
+        {% for symptom in symptoms %}
+            <li>{{ symptom.replace('_', ' ') }}</li>
+        {% endfor %}
+    </ul>
+    
+    <h3>You might have: {{predicted_disease}}</h2>
+</body>
+</html>

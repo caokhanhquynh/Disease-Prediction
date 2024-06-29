@@ -1,0 +1,13 @@
+body {
+    text-align: center;
+}
+.submit{
+    display:flex;
+    position: relative;
+    margin-left: 500px;
+}
+.add_symptoms{
+    display: flex;
+    position: absolute;
+    margin-left: 200px;
+}
