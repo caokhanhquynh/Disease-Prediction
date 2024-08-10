@@ -1,39 +1,3 @@
-# # Import necessary libraries
-# import numpy as np
-# from sklearn.model_selection import train_test_split, GridSearchCV, cross_val_score
-# from sklearn.ensemble import RandomForestClassifier
-# from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix, mean_squared_error, r2_score, mean_absolute_error
-
-# # Load the dataset (Iris dataset for classification)
-# from sklearn.datasets import load_iris
-
-# data = load_iris()
-
-# print(data)
-
-# X = data.data
-# y = data.target
-
-# print("X = ", X)
-# print("y = ", y)
-
-# # Split the dataset into training, validation, and test sets
-# X_temp, X_test, y_temp, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-# X_train, X_val, y_train, y_val = train_test_split(X_temp, y_temp, test_size=0.1, random_state=42)
-
-# print("X_temp = ", X_temp)
-# print("X_test = ", X_test)
-# print("X_train = ", X_train)
-# print("X_val = ", X_val)
-# # Initialize the model
-# model = RandomForestClassifier(random_state=42)
-
-# # Fit the model to the training data
-# model.fit(X_train, y_train)
-# print("Model = ", model)
-# print("X_train = ", X_train)
-
-
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split, GridSearchCV, cross_val_score

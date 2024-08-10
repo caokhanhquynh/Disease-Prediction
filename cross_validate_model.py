@@ -1,9 +1,10 @@
 import pandas as pd
 import numpy as np
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.neighbors import KNeighborsClassifier
 
-data = pd.read_csv('Data/training_data.csv')
+# Load the dataset
+data = pd.read_csv('Data/dat.csv')
 
 default_symptoms = [
     "itching", "skin_rash", "nodal_skin_eruptions", "continuous_sneezing", "shivering",
@@ -37,23 +38,17 @@ default_symptoms = [
     "blister", "red_sore_around_nose", "yellow_crust_ooze", "prognosis"
 ]
 
-def predict_disease(symptoms):
-    print(symptoms)
-    new_symptoms = []
-    for i in default_symptoms:
-        if i in symptoms:
-            new_symptoms.append(1)
-        else:
-            new_symptoms.append(0)
-    
-    input_data = pd.DataFrame([new_symptoms], columns=default_symptoms)
-    
-    X = data[default_symptoms]
-    y = data['Disease']
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-    knn = KNeighborsClassifier(n_neighbors=5)
-    knn.fit(X_train, y_train)
-    
-    predicted_disease = knn.predict(input_data)
-    
-    return predicted_disease
+# Prepare the data
+X = data[default_symptoms]
+y = data['Disease']
+
+# Initialize the KNeighborsClassifier
+knn = KNeighborsClassifier(n_neighbors=5)
+
+# Perform cross-validation
+scores = cross_val_score(knn, X, y, cv=10)  # 10-fold cross-validation
+
+# Output the results
+print("Cross-validation scores for each fold:", scores)
+print("Mean cross-validation score:", scores.mean())
+print("Standard deviation of cross-validation scores:", scores.std())
